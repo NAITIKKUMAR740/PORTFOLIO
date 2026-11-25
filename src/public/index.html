@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <div class="bg-pattern" aria-hidden="true"></div>
-
     <header class="site-header">
       <div class="container nav-inner">
         <a href="#top" class="brand" aria-label="Home">
@@ -64,17 +62,16 @@
     <main id="top">
       <!-- Hero Section -->
       <section class="hero">
-        <div class="container hero-grid">
-          <div>
+        <div class="container">
+          <div class="hero-content">
             <span class="badge badge-success" id="hero-availability">
-              <span class="status-dot" aria-hidden="true"></span>
               <span id="availability-text">Open to Full-Stack Opportunities</span>
             </span>
 
-            <h1 class="hero-title" id="hero-name">Loading profile...</h1>
-            <p class="hero-headline" id="hero-headline">Full-Stack Web Engineer</p>
+            <h1 class="hero-title" id="hero-name">Naitik Kumar</h1>
+            <p class="hero-headline" id="hero-headline">Full-Stack Web Developer</p>
             <p class="hero-tagline" id="hero-tagline">
-              Building scalable REST APIs, resilient databases, and responsive user experiences.
+              Building mobile-first web interfaces with HTML, CSS &amp; JavaScript and scalable backends with Node.js, Express.js &amp; MongoDB.
             </p>
 
             <div class="hero-cta">
@@ -95,29 +92,17 @@
             <div class="social-row" id="hero-socials"></div>
           </div>
 
-          <aside class="hero-panel" aria-label="Developer Summary Panel">
-            <div class="terminal-bar">
-              <div class="terminal-dots" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
-              <span>portfolio.api.json</span>
-            </div>
-            <div class="terminal-body">
-              <pre class="code-snippet" id="hero-code-snippet"></pre>
-              <div class="stats-grid" id="hero-stats"></div>
-            </div>
-          </aside>
+          <div class="stats-grid" id="hero-stats"></div>
         </div>
       </section>
 
       <!-- About Section -->
-      <section class="section" id="about">
+      <section class="section section-alt" id="about">
         <div class="container">
           <div class="section-header">
-            <span class="section-kicker">01 // About</span>
-            <h2 class="section-title">Engineering Focus &amp; Background</h2>
+            <h2 class="section-title">About Me</h2>
             <p class="section-subtitle">
-              Backend-driven portfolio architecture with clean MVC layering and production readiness.
+              Background, development approach, and core technical focus.
             </p>
           </div>
 
@@ -128,7 +113,7 @@
             </article>
 
             <article class="card">
-              <h3 style="margin-top: 0;">Core Engineering Strengths</h3>
+              <h3 style="margin-top: 0;">Core Skills &amp; Focus</h3>
               <ul class="highlights-list" id="about-highlights"></ul>
             </article>
           </div>
@@ -139,10 +124,9 @@
       <section class="section" id="skills">
         <div class="container">
           <div class="section-header">
-            <span class="section-kicker">02 // Capabilities</span>
             <h2 class="section-title">Technical Skills</h2>
             <p class="section-subtitle">
-              Dynamically loaded from MongoDB and grouped across frontend, backend, database, and DevOps stacks.
+              Technologies and tools I use to build full-stack web applications.
             </p>
           </div>
 
@@ -152,13 +136,12 @@
       </section>
 
       <!-- Projects Section -->
-      <section class="section" id="projects">
+      <section class="section section-alt" id="projects">
         <div class="container">
           <div class="section-header">
-            <span class="section-kicker">03 // Selected Work</span>
-            <h2 class="section-title">Featured Engineering Projects</h2>
+            <h2 class="section-title">Projects</h2>
             <p class="section-subtitle">
-              Search and filter projects fetched via RESTful APIs. Click any project to inspect architecture highlights.
+              Browse and filter my full-stack projects. Click any project to view details.
             </p>
           </div>
 
@@ -186,18 +169,17 @@
       <section class="section" id="contact">
         <div class="container">
           <div class="section-header">
-            <span class="section-kicker">04 // Get In Touch</span>
-            <h2 class="section-title">Start a Conversation</h2>
+            <h2 class="section-title">Contact</h2>
             <p class="section-subtitle">
-              Messages are validated on the backend, persisted in MongoDB, and delivered via Nodemailer.
+              Have a question, project idea, or internship opportunity? Send me a message below.
             </p>
           </div>
 
           <div class="contact-grid">
             <aside class="card">
-              <h3 style="margin-top: 0;">Direct Channels</h3>
+              <h3 style="margin-top: 0;">Contact Details</h3>
               <p style="color: var(--text-muted); font-size: 0.94rem;">
-                Interested in collaborating on full-stack web apps, API design, or internship opportunities? Send a note anytime.
+                Feel free to reach out directly via email, GitHub, or the contact form.
               </p>
               <div style="display: grid; gap: 0.75rem; margin-top: 1.25rem;" id="contact-info-list"></div>
             </aside>
@@ -206,26 +188,26 @@
               <div class="form-grid form-grid-2">
                 <div class="form-field" data-field="name">
                   <label for="contact-name">Your Name</label>
-                  <input id="contact-name" name="name" type="text" placeholder="Jane Doe" required minlength="2" maxlength="100" />
+                  <input id="contact-name" name="name" type="text" placeholder="Your name" required minlength="2" maxlength="100" />
                   <span class="field-error" id="error-name"></span>
                 </div>
 
                 <div class="form-field" data-field="email">
                   <label for="contact-email">Email Address</label>
-                  <input id="contact-email" name="email" type="email" placeholder="jane@example.com" required />
+                  <input id="contact-email" name="email" type="email" placeholder="you@example.com" required />
                   <span class="field-error" id="error-email"></span>
                 </div>
               </div>
 
               <div class="form-field" data-field="subject" style="margin-top: 0.75rem;">
                 <label for="contact-subject">Subject</label>
-                <input id="contact-subject" name="subject" type="text" placeholder="Internship / Project Inquiry" required minlength="3" maxlength="150" />
+                <input id="contact-subject" name="subject" type="text" placeholder="Subject of your message" required minlength="3" maxlength="150" />
                 <span class="field-error" id="error-subject"></span>
               </div>
 
               <div class="form-field" data-field="message" style="margin-top: 0.75rem;">
                 <label for="contact-message">Message</label>
-                <textarea id="contact-message" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required minlength="10" maxlength="3000"></textarea>
+                <textarea id="contact-message" name="message" rows="5" placeholder="Write your message here..." required minlength="10" maxlength="3000"></textarea>
                 <span class="field-error" id="error-message"></span>
               </div>
 
@@ -267,12 +249,12 @@
         <p id="modal-project-description" style="color: var(--text-soft); white-space: pre-line;"></p>
 
         <div id="modal-highlights-wrap" style="margin: 1rem 0;">
-          <h4 style="margin: 0 0 0.5rem;">Key Engineering Highlights</h4>
+          <h4 style="margin: 0 0 0.5rem;">Key Highlights</h4>
           <ul class="highlights-list" id="modal-project-highlights"></ul>
         </div>
 
         <div style="margin: 1rem 0;">
-          <h4 style="margin: 0 0 0.5rem;">Technology Stack</h4>
+          <h4 style="margin: 0 0 0.5rem;">Technologies Used</h4>
           <div class="chip-row" id="modal-project-tech"></div>
         </div>
 
@@ -283,12 +265,12 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p style="margin: 0;">
-          &copy; <span id="footer-year"></span> <span id="footer-name">DevPortfolio</span>. Built with Node.js, Express &amp; MongoDB.
+          &copy; <span id="footer-year"></span> <span id="footer-name">Naitik Kumar</span>. Built with Node.js, Express &amp; MongoDB.
         </p>
         <div style="display: flex; gap: 1rem;">
           <a href="#top">Back to top</a>
           <a href="/api/health" target="_blank" rel="noopener noreferrer">API Health</a>
-          <a href="/admin">Admin Portal</a>
+          <a href="/admin">Admin</a>
         </div>
       </div>
     </footer>

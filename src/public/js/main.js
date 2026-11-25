@@ -93,20 +93,6 @@
       socialsEl.appendChild(a);
     });
 
-    // Terminal code snippet
-    const codeEl = document.getElementById('hero-code-snippet');
-    codeEl.textContent = JSON.stringify(
-      {
-        developer: profile.fullName,
-        role: profile.headline,
-        location: profile.location || 'Remote',
-        availability: profile.availability || 'available',
-        stack: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express', 'MongoDB'],
-      },
-      null,
-      2
-    );
-
     // Stats grid
     const statsEl = document.getElementById('hero-stats');
     statsEl.replaceChildren();
@@ -330,25 +316,14 @@
 
       const topGroup = el('div');
 
-      const banner = el('div', 'project-banner');
-      if (isSafeUrl(project.imageUrl)) {
-        const img = document.createElement('img');
-        img.src = project.imageUrl;
-        img.alt = `${project.title} preview`;
-        img.loading = 'lazy';
-        banner.appendChild(img);
-      }
-
-      const bannerTop = el('div', 'project-banner-top');
-      bannerTop.appendChild(el('span', 'badge', project.category));
+      const cardTop = el('div', 'project-card-top');
+      cardTop.appendChild(el('span', 'badge', project.category));
       if (project.featured) {
-        bannerTop.appendChild(el('span', 'badge badge-success', 'Featured'));
+        cardTop.appendChild(el('span', 'badge badge-success', 'Featured'));
       }
-      banner.appendChild(bannerTop);
-      topGroup.appendChild(banner);
+      topGroup.appendChild(cardTop);
 
       const title = el('h3', 'project-title', project.title);
-      title.style.marginTop = '1rem';
       topGroup.appendChild(title);
       topGroup.appendChild(el('p', 'project-summary', project.summary));
 
