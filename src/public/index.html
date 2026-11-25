@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Naitik Kumar — Full-Stack Web Developer Portfolio powered by Node.js, Express.js, and MongoDB."
+    />
+    <title>Naitik Kumar — Full-Stack Developer Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="bg-pattern" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a href="#top" class="brand" aria-label="Home">
+          <span class="brand-mark" id="brand-initials">NK</span>
+          <span id="brand-name">Naitik Kumar</span>
+        </a>
+
+        <nav class="nav-links" id="primary-nav" aria-label="Primary Navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a href="/admin">Admin</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button
+            type="button"
+            class="icon-btn"
+            id="theme-toggle"
+            aria-label="Toggle color theme"
+            title="Switch Light / Dark Mode"
+          >
+            <svg id="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" hidden>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"></path>
+            </svg>
+            <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="icon-btn mobile-menu-btn"
+            id="mobile-menu-toggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="badge badge-success" id="hero-availability">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span id="availability-text">Open to Full-Stack Opportunities</span>
+            </span>
+
+            <h1 class="hero-title" id="hero-name">Loading profile...</h1>
+            <p class="hero-headline" id="hero-headline">Full-Stack Web Engineer</p>
+            <p class="hero-tagline" id="hero-tagline">
+              Building scalable REST APIs, resilient databases, and responsive user experiences.
+            </p>
+
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="#contact" class="btn btn-secondary">Contact Me</a>
+              <a
+                href="#"
+                class="btn btn-ghost"
+                id="hero-resume-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                hidden
+              >
+                Resume
+              </a>
+            </div>
+
+            <div class="social-row" id="hero-socials"></div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Developer Summary Panel">
+            <div class="terminal-bar">
+              <div class="terminal-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span>portfolio.api.json</span>
+            </div>
+            <div class="terminal-body">
+              <pre class="code-snippet" id="hero-code-snippet"></pre>
+              <div class="stats-grid" id="hero-stats"></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">01 // About</span>
+            <h2 class="section-title">Engineering Focus &amp; Background</h2>
+            <p class="section-subtitle">
+              Backend-driven portfolio architecture with clean MVC layering and production readiness.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <article class="card">
+              <p class="about-bio" id="about-bio">Loading biography...</p>
+              <div class="meta-row" id="about-meta"></div>
+            </article>
+
+            <article class="card">
+              <h3 style="margin-top: 0;">Core Engineering Strengths</h3>
+              <ul class="highlights-list" id="about-highlights"></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section class="section" id="skills">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">02 // Capabilities</span>
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-subtitle">
+              Dynamically loaded from MongoDB and grouped across frontend, backend, database, and DevOps stacks.
+            </p>
+          </div>
+
+          <div class="filter-bar" id="skill-filters" role="tablist" aria-label="Filter skills by category"></div>
+          <div class="skills-grid" id="skills-grid"></div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">03 // Selected Work</span>
+            <h2 class="section-title">Featured Engineering Projects</h2>
+            <p class="section-subtitle">
+              Search and filter projects fetched via RESTful APIs. Click any project to inspect architecture highlights.
+            </p>
+          </div>
+
+          <div class="projects-toolbar">
+            <div class="filter-bar" id="project-filters" style="margin-bottom: 0;" role="tablist" aria-label="Filter projects by category"></div>
+            <div class="search-box">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+              <input
+                type="search"
+                id="project-search"
+                placeholder="Search title or tech stack..."
+                aria-label="Search projects"
+              />
+            </div>
+          </div>
+
+          <div class="projects-grid" id="projects-grid"></div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-kicker">04 // Get In Touch</span>
+            <h2 class="section-title">Start a Conversation</h2>
+            <p class="section-subtitle">
+              Messages are validated on the backend, persisted in MongoDB, and delivered via Nodemailer.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <aside class="card">
+              <h3 style="margin-top: 0;">Direct Channels</h3>
+              <p style="color: var(--text-muted); font-size: 0.94rem;">
+                Interested in collaborating on full-stack web apps, API design, or internship opportunities? Send a note anytime.
+              </p>
+              <div style="display: grid; gap: 0.75rem; margin-top: 1.25rem;" id="contact-info-list"></div>
+            </aside>
+
+            <form class="card" id="contact-form" novalidate>
+              <div class="form-grid form-grid-2">
+                <div class="form-field" data-field="name">
+                  <label for="contact-name">Your Name</label>
+                  <input id="contact-name" name="name" type="text" placeholder="Jane Doe" required minlength="2" maxlength="100" />
+                  <span class="field-error" id="error-name"></span>
+                </div>
+
+                <div class="form-field" data-field="email">
+                  <label for="contact-email">Email Address</label>
+                  <input id="contact-email" name="email" type="email" placeholder="jane@example.com" required />
+                  <span class="field-error" id="error-email"></span>
+                </div>
+              </div>
+
+              <div class="form-field" data-field="subject" style="margin-top: 0.75rem;">
+                <label for="contact-subject">Subject</label>
+                <input id="contact-subject" name="subject" type="text" placeholder="Internship / Project Inquiry" required minlength="3" maxlength="150" />
+                <span class="field-error" id="error-subject"></span>
+              </div>
+
+              <div class="form-field" data-field="message" style="margin-top: 0.75rem;">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required minlength="10" maxlength="3000"></textarea>
+                <span class="field-error" id="error-message"></span>
+              </div>
+
+              <!-- Honeypot field for spam protection -->
+              <div class="honeypot-field" aria-hidden="true">
+                <label for="contact-website">Website</label>
+                <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+                <button type="submit" class="btn btn-primary" id="contact-submit-btn">
+                  Send Message
+                </button>
+                <span style="font-size: 0.82rem; color: var(--text-muted);" id="contact-char-count">0 / 3000</span>
+              </div>
+
+              <div id="contact-feedback" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Project Details Modal -->
+    <div class="modal-backdrop" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
+      <div class="modal-panel">
+        <div class="modal-header">
+          <div>
+            <span class="badge" id="modal-project-category">Full-Stack</span>
+            <h3 id="modal-project-title" style="margin: 0.6rem 0 0; font-size: 1.4rem;"></h3>
+          </div>
+          <button type="button" class="icon-btn" id="modal-close-btn" aria-label="Close project details">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <p id="modal-project-description" style="color: var(--text-soft); white-space: pre-line;"></p>
+
+        <div id="modal-highlights-wrap" style="margin: 1rem 0;">
+          <h4 style="margin: 0 0 0.5rem;">Key Engineering Highlights</h4>
+          <ul class="highlights-list" id="modal-project-highlights"></ul>
+        </div>
+
+        <div style="margin: 1rem 0;">
+          <h4 style="margin: 0 0 0.5rem;">Technology Stack</h4>
+          <div class="chip-row" id="modal-project-tech"></div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem;" id="modal-project-links"></div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p style="margin: 0;">
+          &copy; <span id="footer-year"></span> <span id="footer-name">DevPortfolio</span>. Built with Node.js, Express &amp; MongoDB.
+        </p>
+        <div style="display: flex; gap: 1rem;">
+          <a href="#top">Back to top</a>
+          <a href="/api/health" target="_blank" rel="noopener noreferrer">API Health</a>
+          <a href="/admin">Admin Portal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/js/theme.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

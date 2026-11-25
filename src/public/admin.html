@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Portal — Portfolio CMS</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body>
+    <div class="bg-pattern" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container nav-inner">
+        <a href="/" class="brand">
+          <span class="brand-mark">&lt;/&gt;</span>
+          <span>Portfolio Admin</span>
+        </a>
+
+        <div class="nav-actions">
+          <a href="/" class="btn btn-ghost btn-sm">View Public Site</a>
+          <button
+            type="button"
+            class="icon-btn"
+            id="theme-toggle"
+            aria-label="Toggle color theme"
+          >
+            <svg id="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" hidden>
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"></path>
+            </svg>
+            <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" id="logout-btn" hidden>
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container admin-main">
+      <!-- Login View -->
+      <section class="login-wrapper card" id="login-section">
+        <span class="section-kicker">Protected Portal</span>
+        <h1 style="margin: 0 0 0.5rem;">Admin Sign In</h1>
+        <p style="margin: 0 0 1.25rem; color: var(--text-muted); font-size: 0.92rem;">
+          Sign in with your configured admin credentials to manage profile, projects, skills, and contact inquiries.
+        </p>
+
+        <form id="login-form">
+          <div class="form-field">
+            <label for="login-email">Admin Email</label>
+            <input id="login-email" type="email" required placeholder="admin@example.com" />
+          </div>
+
+          <div class="form-field" style="margin-top: 0.85rem;">
+            <label for="login-password">Password</label>
+            <input id="login-password" type="password" required placeholder="Enter password" />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.1rem;" id="login-submit-btn">
+            Sign In
+          </button>
+          <div id="login-error"></div>
+        </form>
+      </section>
+
+      <!-- Dashboard View -->
+      <section id="dashboard-section" hidden>
+        <div class="admin-topbar">
+          <div>
+            <span class="section-kicker">Content Management</span>
+            <h1 style="margin: 0;">Portfolio Control Center</h1>
+          </div>
+          <span class="badge badge-success" id="admin-email-badge">Authenticated</span>
+        </div>
+
+        <div class="admin-tabs" role="tablist">
+          <button type="button" class="tab-btn active" data-tab="messages">Inbox Messages</button>
+          <button type="button" class="tab-btn" data-tab="projects">Projects</button>
+          <button type="button" class="tab-btn" data-tab="skills">Skills</button>
+          <button type="button" class="tab-btn" data-tab="profile">Profile</button>
+        </div>
+
+        <!-- Tab 1: Contact Messages -->
+        <div class="tab-panel active" id="tab-messages">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <div class="filter-bar" id="msg-filter-bar" style="margin-bottom: 0;">
+              <button type="button" class="filter-pill active" data-status="all">All</button>
+              <button type="button" class="filter-pill" data-status="new">New</button>
+              <button type="button" class="filter-pill" data-status="read">Read</button>
+              <button type="button" class="filter-pill" data-status="replied">Replied</button>
+              <button type="button" class="filter-pill" data-status="archived">Archived</button>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" id="refresh-messages-btn">Refresh</button>
+          </div>
+          <div class="admin-list" id="messages-list"></div>
+        </div>
+
+        <!-- Tab 2: Projects Manager -->
+        <div class="tab-panel" id="tab-projects">
+          <div class="admin-split">
+            <form class="card" id="project-form">
+              <input type="hidden" id="proj-id" />
+              <h2 style="margin-top: 0;" id="proj-form-title">Add Project</h2>
+
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="proj-title">Title</label>
+                  <input id="proj-title" type="text" required maxlength="120" />
+                </div>
+
+                <div class="form-grid form-grid-2">
+                  <div class="form-field">
+                    <label for="proj-category">Category</label>
+                    <select id="proj-category" required>
+                      <option value="Full-Stack">Full-Stack</option>
+                      <option value="Backend">Backend</option>
+                      <option value="Frontend">Frontend</option>
+                      <option value="API">API</option>
+                      <option value="DevOps">DevOps</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label for="proj-status">Status</label>
+                    <select id="proj-status">
+                      <option value="completed">completed</option>
+                      <option value="in-progress">in-progress</option>
+                      <option value="archived">archived</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="proj-summary">Summary (short card text)</label>
+                  <input id="proj-summary" type="text" required maxlength="300" />
+                </div>
+
+                <div class="form-field">
+                  <label for="proj-description">Full Description</label>
+                  <textarea id="proj-description" rows="4" required maxlength="3000"></textarea>
+                </div>
+
+                <div class="form-field">
+                  <label for="proj-tech">Tech Stack (comma separated)</label>
+                  <input id="proj-tech" type="text" placeholder="Node.js, Express, MongoDB, JavaScript" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="proj-highlights">Engineering Highlights (one per line)</label>
+                  <textarea id="proj-highlights" rows="3" placeholder="JWT authentication&#10;RESTful MVC architecture"></textarea>
+                </div>
+
+                <div class="form-grid form-grid-2">
+                  <div class="form-field">
+                    <label for="proj-repo">Repository URL</label>
+                    <input id="proj-repo" type="url" placeholder="https://github.com/..." />
+                  </div>
+                  <div class="form-field">
+                    <label for="proj-live">Live Demo URL</label>
+                    <input id="proj-live" type="url" placeholder="https://..." />
+                  </div>
+                </div>
+
+                <div class="form-grid form-grid-2">
+                  <div class="form-field">
+                    <label for="proj-order">Display Order</label>
+                    <input id="proj-order" type="number" min="0" value="0" />
+                  </div>
+                  <div class="checkbox-row" style="padding-top: 1.6rem;">
+                    <input id="proj-featured" type="checkbox" />
+                    <label for="proj-featured">Featured project</label>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.65rem; margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary" id="proj-submit-btn">Save Project</button>
+                <button type="button" class="btn btn-ghost" id="proj-reset-btn">Reset</button>
+              </div>
+            </form>
+
+            <div class="admin-list" id="admin-projects-list"></div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Skills Manager -->
+        <div class="tab-panel" id="tab-skills">
+          <div class="admin-split">
+            <form class="card" id="skill-form">
+              <input type="hidden" id="skill-id" />
+              <h2 style="margin-top: 0;" id="skill-form-title">Add Skill</h2>
+
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="skill-name">Skill Name</label>
+                  <input id="skill-name" type="text" required maxlength="60" placeholder="Express.js" />
+                </div>
+
+                <div class="form-grid form-grid-2">
+                  <div class="form-field">
+                    <label for="skill-category">Category</label>
+                    <select id="skill-category" required>
+                      <option value="Frontend">Frontend</option>
+                      <option value="Backend">Backend</option>
+                      <option value="Database">Database</option>
+                      <option value="DevOps & Tools">DevOps &amp; Tools</option>
+                      <option value="Languages">Languages</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-field">
+                    <label for="skill-level">Level</label>
+                    <select id="skill-level">
+                      <option value="Beginner">Beginner</option>
+                      <option value="Intermediate">Intermediate</option>
+                      <option value="Advanced" selected>Advanced</option>
+                      <option value="Expert">Expert</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid form-grid-2">
+                  <div class="form-field">
+                    <label for="skill-proficiency">Proficiency (1-100)</label>
+                    <input id="skill-proficiency" type="number" min="1" max="100" value="85" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="skill-order">Display Order</label>
+                    <input id="skill-order" type="number" min="0" value="0" />
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.65rem; margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary">Save Skill</button>
+                <button type="button" class="btn btn-ghost" id="skill-reset-btn">Reset</button>
+              </div>
+            </form>
+
+            <div class="admin-list" id="admin-skills-list"></div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Profile Editor -->
+        <div class="tab-panel" id="tab-profile">
+          <form class="card" id="profile-form">
+            <h2 style="margin-top: 0;">Edit Portfolio Profile</h2>
+            <div class="form-grid">
+              <div class="form-grid form-grid-2">
+                <div class="form-field">
+                  <label for="prof-fullName">Full Name</label>
+                  <input id="prof-fullName" type="text" required />
+                </div>
+                <div class="form-field">
+                  <label for="prof-headline">Headline</label>
+                  <input id="prof-headline" type="text" required />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="prof-tagline">Hero Tagline</label>
+                <input id="prof-tagline" type="text" />
+              </div>
+
+              <div class="form-field">
+                <label for="prof-bio">Biography</label>
+                <textarea id="prof-bio" rows="5" required></textarea>
+              </div>
+
+              <div class="form-field">
+                <label for="prof-highlights">About Highlights (one per line)</label>
+                <textarea id="prof-highlights" rows="4"></textarea>
+              </div>
+
+              <div class="form-grid form-grid-2">
+                <div class="form-field">
+                  <label for="prof-location">Location</label>
+                  <input id="prof-location" type="text" />
+                </div>
+                <div class="form-field">
+                  <label for="prof-email">Public Contact Email</label>
+                  <input id="prof-email" type="email" required />
+                </div>
+              </div>
+
+              <div class="form-grid form-grid-2">
+                <div class="form-field">
+                  <label for="prof-availability">Availability</label>
+                  <select id="prof-availability">
+                    <option value="available">available</option>
+                    <option value="open">open</option>
+                    <option value="busy">busy</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="prof-availabilityLabel">Availability Label</label>
+                  <input id="prof-availabilityLabel" type="text" />
+                </div>
+              </div>
+
+              <div class="form-grid form-grid-2">
+                <div class="form-field">
+                  <label for="prof-github">GitHub URL</label>
+                  <input id="prof-github" type="url" />
+                </div>
+                <div class="form-field">
+                  <label for="prof-linkedin">LinkedIn URL</label>
+                  <input id="prof-linkedin" type="url" />
+                </div>
+              </div>
+
+              <div class="form-grid form-grid-2">
+                <div class="form-field">
+                  <label for="prof-website">Website URL</label>
+                  <input id="prof-website" type="url" />
+                </div>
+                <div class="form-field">
+                  <label for="prof-resume">Resume URL</label>
+                  <input id="prof-resume" type="url" />
+                </div>
+              </div>
+
+              <div class="form-grid form-grid-2">
+                <div class="form-field">
+                  <label for="prof-stat-projects">Projects Completed</label>
+                  <input id="prof-stat-projects" type="number" min="0" />
+                </div>
+                <div class="form-field">
+                  <label for="prof-stat-years">Years Experience</label>
+                  <input id="prof-stat-years" type="number" min="0" step="0.5" />
+                </div>
+                <div class="form-field">
+                  <label for="prof-stat-tech">Technologies Count</label>
+                  <input id="prof-stat-tech" type="number" min="0" />
+                </div>
+                <div class="form-field">
+                  <label for="prof-stat-certs">Certifications Count</label>
+                  <input id="prof-stat-certs" type="number" min="0" />
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.25rem;">
+              <button type="submit" class="btn btn-primary">Save Profile</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="admin-toast" role="status" aria-live="polite"></div>
+
+    <script src="/js/theme.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/admin.js"></script>
+  </body>
+</html>
